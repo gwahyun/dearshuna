@@ -1,4 +1,5 @@
 import React from "react";
+import firebase from "../base";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
 const Auth = () => {
@@ -7,10 +8,7 @@ const Auth = () => {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
       .then((result) => {
-        // This gives you a Google Access Token. You can use it to access the Google API.
         console.log(result);
-
-        // ...
       })
       .catch((error) => {});
   };
