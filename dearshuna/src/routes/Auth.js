@@ -1,5 +1,4 @@
 import React from "react";
-import firebase from "../base";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
 const Auth = () => {
@@ -15,7 +14,7 @@ const Auth = () => {
   return (
     <div>
       <button value="googleLogin" onClick={googleLogin}>
-        구글로그인!!!
+        구글로그인
       </button>
     </div>
   );
