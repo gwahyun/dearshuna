@@ -1,35 +1,34 @@
-import React from "react";
-import { HashRouter, Router, Routes, Route } from "react-router-dom";
-import Auth from "../routes/Auth";
-import Message from "../routes/Message";
-import OnlyforShuna from "../routes/OnlyforShuna";
+import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 const Nav = ({ logginUser }) => {
+  const [user, setUser] = useState(null);
+
   return (
-    <HashRouter>
-      <Nav>
-        <ul>
-          <Route path="/message" element={<Message />}>
-            <li>Message</li>
-          </Route>
-          {/* <Route path="/album" element={<Album />}>
-            <li>Album</li>
-          </Route> */}
-          <Route path="/onlyforshuna" element={<OnlyforShuna />}>
-            <li>dearShuna</li>
-          </Route>
-          {logginUser ? (
-            <li>{logginUser.displayName}어서와</li>
-          ) : (
-            <Route path="/Auth" element={<Auth />}>
-              <li>
-                <button>로그인하기</button>
-              </li>
-            </Route>
-          )}
-        </ul>
-      </Nav>
-    </HashRouter>
+    <ul>
+      <NavLink to="/message">
+        <li>Message</li>
+      </NavLink>
+      <NavLink to="/onlyforshuna">
+        <li>OnlyforShuna</li>
+      </NavLink>
+      <NavLink to="/home">
+        <li>Home</li>
+      </NavLink>
+      <NavLink to="/message">
+        <li>Message</li>
+      </NavLink>
+      {logginUser ? (
+        <li>
+          <img src={logginUser.photoURL} />
+          {logginUser.displayName}님 어서오세요
+        </li>
+      ) : (
+        <NavLink to="/auth">
+          <li>Auth</li>
+        </NavLink>
+      )}
+    </ul>
   );
 };
 
