@@ -1,17 +1,12 @@
-import { HashRouter, Route, Routes } from "react-router-dom";
+import React from "react";
+import { HashRouter, Router, Routes, Route } from "react-router-dom";
 import Auth from "../routes/Auth";
-import Home from "../routes/Home";
+import Message from "../routes/Message";
+import OnlyforShuna from "../routes/OnlyforShuna";
 
-const AppRouter = ({ loginUser }) => {
+const Nav = ({ logginUser }) => {
   return (
     <HashRouter>
-      <Routes>
-        {loginUser ? (
-          <Route exact path="/" element={<Home loginUser={loginUser} />} />
-        ) : (
-          <Route exact path="/" element={<Auth />} />
-        )}
-      </Routes>
       <Nav>
         <ul>
           <Route path="/message" element={<Message />}>
@@ -38,4 +33,4 @@ const AppRouter = ({ loginUser }) => {
   );
 };
 
-export default AppRouter;
+export default Nav;

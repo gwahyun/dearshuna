@@ -9,7 +9,9 @@ const Auth = () => {
       .then((result) => {
         console.log(result);
       })
-      .catch((error) => {});
+      .catch((error) => {
+        console.log(error);
+      });
   };
   return (
     <div>

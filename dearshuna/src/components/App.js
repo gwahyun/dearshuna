@@ -1,16 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import AppRouter from "./Router";
 import firebase from "../base";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import Nav from "./Nav";
 
 function App() {
-  const [isLoggedIn, setLoggedIn] = useState(null);
+  const [init, setInit] = useState();
+  const [loginUser, setLoggedIn] = useState(null);
   const auth = getAuth(firebase);
-  onAuthStateChanged(auth, (user) => {
-    setLoggedIn(user);
-    console.log(user);
-  });
+  useEffect(() => {
+    onAuthStateChanged(auth, (userObj) => {
+      setLoggedIn(userObj);
+    });
+  }, []);
 
-  return <AppRouter isLoggedIn={isLoggedIn} />;
+  return <AppRouter loginUser={loginUser} />;
 }
 export default App;
